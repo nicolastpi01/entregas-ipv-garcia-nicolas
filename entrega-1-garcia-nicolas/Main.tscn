@@ -17,7 +17,6 @@ mob_scene = ExtResource( 3 )
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
 
 [node name="ScoreTimer" type="Timer" parent="."]
 one_shot = true
@@ -33,8 +32,7 @@ position = Vector2( 250, 450 )
 curve = SubResource( 1 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2( -1, -2 )
-rotation = 1.5708
+rotation = -0.442962
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
