@@ -13,7 +13,7 @@ func start(pos):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	#hide()
+	hide()
 	#pass # Replace with function body.
 
 
