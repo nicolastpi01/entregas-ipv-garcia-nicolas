@@ -2,6 +2,12 @@ extends Sprite
 
 class_name Projectile
 
+signal delete_requested(projectile)
+
+export (float) var speed
+
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -17,11 +23,17 @@ func _ready():
 func set_starting_values(starting_position:Vector2, direction:Vector2):
 	global_position = starting_position
 	self.direction = direction
+	$Timer.start()
 	set_physics_process(true)
 	
 func _physics_process(delta):
 	#position.x += 50 * delta
-	position += direction*50*delta
+	position += direction*speed*delta
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Timer_timeout():
+	emit_signal("delete_requested", self)
+	#pass # Replace with function body.
