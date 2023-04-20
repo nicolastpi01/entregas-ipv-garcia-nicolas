@@ -13,11 +13,12 @@ script = ExtResource( 3 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 2.0
+margin_bottom = 4.0
 texture = ExtResource( 2 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 413.003, 395.272 )
@@ -25,11 +26,13 @@ position = Vector2( 413.003, 395.272 )
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 
-[node name="Floor" type="Sprite" parent="."]
-position = Vector2( 400, 513.5 )
-scale = Vector2( 12.1212, 2.62121 )
-texture = ExtResource( 6 )
-
 [node name="TurretsSpawner" type="Node" parent="."]
 script = ExtResource( 5 )
 turret_scene = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 401.5, 517.5 )
+
+[node name="Floor" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 12.0758, 2.65152 )
+texture = ExtResource( 6 )
