@@ -5,10 +5,12 @@
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://entities/enemies/Turret.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/enemies/TurretsSpawner.gd" type="Script" id=5]
-[ext_resource path="res://assets/textures/floor.png" type="Texture" id=6]
+[ext_resource path="res://entities/world/Floor.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -22,6 +24,8 @@ expand = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 413.003, 395.272 )
+GRAVITY = 10.0
+JUMP_SPEED = -500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -30,9 +34,11 @@ current = true
 script = ExtResource( 5 )
 turret_scene = ExtResource( 4 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 401.5, 517.5 )
+[node name="Floor" parent="." instance=ExtResource( 6 )]
+position = Vector2( 398, 517 )
 
-[node name="Floor" type="Sprite" parent="StaticBody2D"]
-scale = Vector2( 12.0758, 2.65152 )
-texture = ExtResource( 6 )
+[node name="Floor2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1191, 517 )
+
+[node name="Floor3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1983, 517 )
