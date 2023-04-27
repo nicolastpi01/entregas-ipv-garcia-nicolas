@@ -18,10 +18,8 @@ layer = -1
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -2.0
-margin_right = 1.0
-margin_bottom = -2.0
+margin_top = -3.0
+margin_bottom = -3.0
 texture = ExtResource( 2 )
 expand = true
 
@@ -50,7 +48,7 @@ position = Vector2( 1983, 517 )
 position = Vector2( 78, 216 )
 
 [node name="Cube2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 79, 294 )
+position = Vector2( 78, 293 )
 
 [node name="Cube3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 75, 141 )
