@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var cannon = $Cannon
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var body: Sprite = $Body
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -47,8 +48,12 @@ func _process_input() -> void:
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if h_movement_direction != 0:
 		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+		body.flip_h = h_movement_direction == -1
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+		if h_movement_direction == 0:
+			animation_player.play("idle")
+			
 
 	var mouse_position:Vector2 = get_global_mouse_position()
 	cannon.look_at(mouse_position)
