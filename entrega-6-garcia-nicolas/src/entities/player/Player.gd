@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var cannon = $Cannon
 
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
 const SNAP_LENGHT := 32.0
@@ -50,7 +52,7 @@ func _process_input() -> void:
 
 	var mouse_position:Vector2 = get_global_mouse_position()
 	cannon.look_at(mouse_position)
-
+	_play_animation("walk")
 
 func _physics_process(delta) -> void:
 	_process_input()
@@ -68,3 +70,7 @@ func _remove() -> void:
 	hide()
 	collision_layer = 0
 
+func _play_animation(anim_name: String):
+	if animation_player.has_animation(anim_name):
+		animation_player.play(anim_name)
+	
